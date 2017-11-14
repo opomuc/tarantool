@@ -9,7 +9,7 @@ box.schema.user.grant('guest', 'replication')
 s = box.schema.space.create('test', {engine = engine});
 index = s:create_index('primary')
 
-test_run:cmd("create server replica with rpl_master=default, script='replication/replica.lua'")
+test_run:cmd("create server replica with rpl_master=default, script='replication/replica.lua', wait_load=False")
 test_run:cmd("start server replica")
 test_run:cmd("switch replica")
 

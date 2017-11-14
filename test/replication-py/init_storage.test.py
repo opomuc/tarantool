@@ -60,7 +60,7 @@ replica = TarantoolServer(server.ini)
 replica.script = 'replication/replica.lua'
 replica.vardir = server.vardir #os.path.join(server.vardir, 'replica')
 replica.rpl_master = master
-replica.deploy(wait=False)
+replica.deploy(wait_load=False)
 
 print 'waiting reconnect on JOIN...'
 server.start()
@@ -71,7 +71,7 @@ replica.stop()
 server.stop()
 
 print 'waiting reconnect on SUBSCRIBE...'
-replica.start(wait=False)
+replica.start(wait_load=False)
 server.start()
 replica.wait_until_started()
 print 'ok'

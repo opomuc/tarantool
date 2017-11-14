@@ -6,7 +6,7 @@ box.schema.user.grant('guest', 'replication')
 box.schema.func.create('_set_pri_lsn')
 box.schema.user.grant('guest', 'execute', 'function', '_set_pri_lsn')
 test_run:cmd("create server hot_standby with script='replication/hot_standby.lua', rpl_master=default")
-test_run:cmd("create server replica with rpl_master=default, script='replication/replica.lua'")
+test_run:cmd("create server replica with rpl_master=default, script='replication/replica.lua', wait_load=False")
 test_run:cmd("start server hot_standby")
 test_run:cmd("start server replica")
 

@@ -20,7 +20,7 @@ test_run:cmd("create server hot_standby with script='replication/hot_standby.lua
 ---
 - true
 ...
-test_run:cmd("create server replica with rpl_master=default, script='replication/replica.lua'")
+test_run:cmd("create server replica with rpl_master=default, script='replication/replica.lua', wait_load=False")
 ---
 - true
 ...

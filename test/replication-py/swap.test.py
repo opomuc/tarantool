@@ -38,10 +38,10 @@ master.admin("box.schema.user.create('%s', { password = '%s'})" % (LOGIN, PASSWO
 master.admin("box.schema.user.grant('%s', 'read,write,execute', 'universe')" % LOGIN)
 master.iproto.py_con.authenticate(LOGIN, PASSWORD)
 master.uri = '%s:%s@%s' % (LOGIN, PASSWORD, master.iproto.uri)
-os.putenv('MASTER', master.uri)
 
 # replica server
 replica = TarantoolServer()
+replica.master_uri = master.uri
 replica.script = "replication-py/replica.lua"
 replica.vardir = server.vardir #os.path.join(server.vardir, 'replica')
 replica.deploy()

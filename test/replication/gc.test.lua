@@ -41,7 +41,7 @@ end)
 test_run:cmd("setopt delimiter ''");
 
 -- Start the replica.
-test_run:cmd("create server replica with rpl_master=default, script='replication/replica.lua'")
+test_run:cmd("create server replica with rpl_master=default, script='replication/replica.lua', wait_load=False")
 test_run:cmd("start server replica")
 
 -- Despite the fact that we invoked garbage collection that
